@@ -1,25 +1,26 @@
-import React, { useState } from "react";
-import "./App.css";
-import Person from "./Person/Person";
+import React, { useState } from 'react';
+import './App.css';
+import Person from './Person/Person';
 
 const App = () => {
   const [personState, setPersonState] = useState({
     persons: [
-      { name: "Max", age: 28 },
-      { name: "Manu", age: 29 },
-      { name: "Stephanie", age: 26 }
-    ],
-    otherState: "otherState"
+      { name: 'Max', age: 28 },
+      { name: 'Manu', age: 29 },
+      { name: 'Stephanie', age: 26 }
+    ]
   });
 
+  const [otherState, setOtherState] = useState('Some other value'); //user another useState so that state doesn't need to merge
+
+  console.log(otherState, personState);
   const switchNameHandler = () => {
     setPersonState({
       persons: [
-        { name: "maxmillion", age: 28 },
-        { name: "Manu", age: 29 },
-        { name: "Stephanie", age: 27 }
-      ],
-      otherState: personState.otherState // hook doesn't merge previous state, so do it manually or use the AppFunctionalComponent.js
+        { name: 'maxmillion', age: 28 },
+        { name: 'Manu', age: 29 },
+        { name: 'Stephanie', age: 27 }
+      ] // as otherState is added using a separate useState it doesn't need to merge.
     });
   };
 
