@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Radium, { StyleRoot } from 'radium';
 import styled from 'styled-components';
 import './App.css';
-import Person from './Person/Person';
+import Person from './Person/PersonStyled';
 
 const StyledButton = styled.button`
   background-color: ${props => props.alt ? 'red' : 'green'};
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
     color : black;
   }
 `;
-class App extends Component {
+class StyledAppComponent extends Component {
   state = {
     persons: [
       { id: 'asfa1', name: 'Max', age: 28 },
@@ -125,4 +125,4 @@ class App extends Component {
 }
 
 // export default Radium(App);
-export default App;
+export default StyledAppComponent;
