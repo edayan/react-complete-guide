@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import "./App.css";
-import Person from "./Person/PersonStyled";
+import React, { useState } from 'react';
+import './App.css';
+import Person from './Person/PersonStyled';
 
 const App = () => {
   const [personState, setPersonState] = useState({
     persons: [
-      { name: "Max", age: 28 },
-      { name: "Manu", age: 29 },
-      { name: "Stephanie", age: 26 }
+      { name: 'Max', age: 28 },
+      { name: 'Manu', age: 29 },
+      { name: 'Stephanie', age: 26 }
     ],
-    otherState: "otherState"
+    otherState: 'otherState'
   });
 
   const switchNameHandler = () => {
     setPersonState({
       persons: [
-        { name: "maxmillion", age: 28 },
-        { name: "Manu", age: 29 },
-        { name: "Stephanie", age: 27 }
+        { name: 'maxmillion', age: 28 },
+        { name: 'Manu', age: 29 },
+        { name: 'Stephanie', age: 27 }
       ],
       otherState: personState.otherState // hook doesn't merge previous state, so do it manually or use the AppFunctionalComponent.js
     });

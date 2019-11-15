@@ -22,7 +22,6 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
 
-
     person.name = event.target.value;
 
     const persons = [...this.state.persons];
@@ -44,7 +43,6 @@ class App extends Component {
   };
 
   render() {
-
     let persons = null;
 
     if (this.state.showPersons) {
@@ -63,7 +61,6 @@ class App extends Component {
           })}
         </div>
       );
-     
     }
 
     const classes = [];
