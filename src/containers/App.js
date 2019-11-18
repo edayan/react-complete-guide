@@ -59,7 +59,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <h1>Hi, I'm a React App</h1>
+        <h1>{this.props.title}</h1>
         <Cockpit
           persons={this.state.persons}
           showPersons={this.state.showPersons}
