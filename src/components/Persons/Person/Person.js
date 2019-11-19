@@ -6,6 +6,7 @@ const person = props => {
   if (rnd > 0.7) {
     throw new Error('something went wrong');// this is to test Error boundary
   }
+  console.log('person.js redering');
   return (
     <div className={classes.Person}>
       <p onClick={props.click}>

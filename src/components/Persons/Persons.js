@@ -4,6 +4,7 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Person from './Person/Person';
 
 const Persons = props => {
+  console.log('Persons.js: rendering');
   return props.persons.map((person, index) => {
     return (
       <ErrorBoundary key={person.id}>
