@@ -3,6 +3,7 @@ import classes from './App.css';
 
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
+import PersonsComponent from '../components/Persons/PersonsComponent';
 
 class App extends Component {
   constructor(props) {
@@ -65,10 +66,18 @@ class App extends Component {
   render() {
     console.log('App.js: render:');
     let persons = null;
-
+    let personsComponent = null;
     if (this.state.showPersons) {
       persons = (
         <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
+      );
+
+      personsComponent = (
+        <PersonsComponent
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
@@ -84,7 +93,8 @@ class App extends Component {
           showPersons={this.state.showPersons}
           clicked={this.togglePersonsHandler}
         />
-        {persons}
+        {/* {persons} */}
+        {personsComponent}
       </div>
     );
   }
