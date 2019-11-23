@@ -23,6 +23,10 @@ class App extends Component {
   static getDerivedStateFromProps = (props, state) => {
     console.log('App.js: getDerivedStateFromProps:', props, state);
     return state;
+  };
+
+  componentWillMount() {
+    console.log('App.js: componentWillMount:');
   }
 
   componentDidMount() {
