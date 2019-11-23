@@ -33,8 +33,9 @@ class App extends Component {
   //   console.log('App.js: componentWillMount:');
   // }
 
-  componentDidMount() {
-    console.log('App.js: componentDidMount:');
+  shouldComponentUpdate() {
+    console.log('App.js: shouldComponentUpdate:');
+    return true;
   }
 
   nameChangedHandler = (event, id) => {
@@ -100,6 +101,14 @@ class App extends Component {
         {personsComponent}
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log('App.js: componentDidMount:');
+  }
+
+  componentDidUpdate() {
+    console.log('App.js: componentDidUpdate:');
   }
 }
 
