@@ -60,4 +60,8 @@ export default class PersonsComponent extends Component {
     console.log('PersonsComponent.js: componentDidUpdate');
     console.log(snapShot);
   }
+
+  componentWillUnmount() {
+    console.log('PersonsComponent.js: componentWillUnmount');
+  }
 }
