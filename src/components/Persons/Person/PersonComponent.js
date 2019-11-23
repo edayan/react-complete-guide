@@ -8,6 +8,7 @@ export default class PersonComponent extends Component {
   }
 
   render() {
+    console.log('PersonComponent.js: render');
     return (
       <div className={classes.Person}>
         <p onClick={this.props.click}>

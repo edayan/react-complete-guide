@@ -7,7 +7,36 @@ export default class PersonsComponent extends Component {
     super(props);
     console.log('PersonsComponent.js: constructor');
   }
+
+  /**
+   *
+   * Gives warning without inititilizing 'state' in the component
+   */
+  //   static getDerivedStateFromProps(props, state) {
+  //     console.log('PersonsComponent.js: getDerivedStateFromProps');
+  //     return state;
+  //   }
+
+  /**
+   *
+   * deprecated lifecycle:componentWillReceiveProps
+   */
+  //   componentWillReceiveProps(props) {
+  //     console.log('PersonsComponent.js: componentWillReceiveProps', props);
+  //   }
+
+  /**
+   * deprecated lifecycle:componentWillUpdate
+   */
+  // componentWillUpdate() {}
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('PersonsComponent.js: shouldComponentUpdate');
+    return true; // return true/false is must: true for update component
+  }
+
   render() {
+    console.log('PersonsComponent.js: render');
     return this.props.persons.map((person, index) => {
       return (
         <ErrorBoundary key={person.id}>
@@ -20,5 +49,15 @@ export default class PersonsComponent extends Component {
         </ErrorBoundary>
       );
     });
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('PersonsComponent.js: getSnapshotBeforeUpdate');
+    return { message: 'this is the snapshot' }; // expected message or null return to avoid warning
+  }
+
+  componentDidUpdate(prevProps, prevState, snapShot) {
+    console.log('PersonsComponent.js: componentDidUpdate');
+    console.log(snapShot);
   }
 }
