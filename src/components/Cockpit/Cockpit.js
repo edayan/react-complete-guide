@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from './Cockpit.css';
 
 const Cockpit = props => {
+  useEffect(() => {
+    console.log('Cockpit.js: useEffect');
+
+    setTimeout(() => {
+      alert('props.persons changed');
+    }, 1000);
+  }, [props.persons]); //pass  [] if only needs useEffect in the initial time
+
   const assignedClasses = [];
   if (props.persons.length <= 2) {
     assignedClasses.push(classes.red);
