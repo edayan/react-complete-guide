@@ -27,7 +27,7 @@ const Cockpit = props => {
       clearTimeout(timer);
       console.log('Cockpit.js: props.persons clean up in useEffect'); // equivalent to 'componentWillUnmount' from componet
     };
-  }, [props.persons]); //only executes useEffect in the props.persons
+  }, [props.persons]); //only executes useEffect in the props.persons// removed passing props.persons and put props.personsLength in App.js so this will not work.
 
   useEffect(() => {
     console.log('Cockpit.js: 3rd useEffect');
@@ -38,10 +38,10 @@ const Cockpit = props => {
   }); // no argument
 
   const assignedClasses = [];
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     assignedClasses.push(classes.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     assignedClasses.push(classes.bold);
   }
 
@@ -60,4 +60,4 @@ const Cockpit = props => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
