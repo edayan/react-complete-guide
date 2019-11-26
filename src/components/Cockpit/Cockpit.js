@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import classes from './Cockpit.css';
 
 const Cockpit = props => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log('Cockpit.js: useEffect 1');
 
     const timer = setTimeout(() => {
       console.log('Cockpit.js:   changed');
     }, 1000);
-
+    toggleBtnRef.current.click();
     return () => {
       clearTimeout(timer);
       console.log('Cockpit.js:  clean up in useEffect 1'); // equivalent to 'componentWillUnmount' from componet
@@ -53,7 +55,7 @@ const Cockpit = props => {
   return (
     <div className={classes.Cockpit}>
       <p className={assignedClasses.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
