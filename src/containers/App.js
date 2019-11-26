@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import classes from './App.css';
-
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import PersonsComponent from '../components/Persons/PersonsComponent';
+import AuthContext from '../context/auth-context';
 import WithClass from '../hoc/WithClass';
+import classes from './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,8 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false,
     showCockPit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   };
 
   static getDerivedStateFromProps = (props, state) => {
@@ -84,6 +85,10 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+
   render() {
     console.log('App.js: render:');
     let persons = null;
@@ -112,16 +117,23 @@ class App extends Component {
           Remove cockPit
         </button>
         <h1>{this.props.title}</h1>
-        {this.state.showCockPit ? (
-          <Cockpit
-            personsLength={this.state.persons.length}
-            showPersons={this.state.showPersons}
-            clicked={this.togglePersonsHandler}
-          />
-        ) : null}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }}
+        >
+          {this.state.showCockPit ? (
+            <Cockpit
+              personsLength={this.state.persons.length}
+              showPersons={this.state.showPersons}
+              clicked={this.togglePersonsHandler}
+            />
+          ) : null}
 
-        {/* {persons} */}
-        {personsComponent}
+          {/* {persons} */}
+          {personsComponent}
+        </AuthContext.Provider>
       </WithClass>
     );
   }

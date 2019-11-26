@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Auxilliary';
 import withClass from '../../../hoc/withClassWrapper';
 import classes from './Person.css';
+import AuthContext from '../../../context/auth-context';
 
 class PersonComponent extends Component {
   constructor(props) {
@@ -23,6 +24,11 @@ class PersonComponent extends Component {
       <Aux>
         {/* //'withClass already has wrapping div with className={Person} */}
         {/* <div key={'i2'} className={this.props.Person}> */}
+        <AuthContext.Consumer>
+          {context =>
+            context.authenticated ? <p>Authenticated</p> : <p>Please login</p>
+          }
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
