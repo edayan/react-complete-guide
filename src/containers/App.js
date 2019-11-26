@@ -4,6 +4,7 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import PersonsComponent from '../components/Persons/PersonsComponent';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
   constructor(props) {
@@ -91,7 +92,7 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={() => this.setState({ showCockPit: false })}>
           Remove cockPit
         </button>
@@ -106,7 +107,7 @@ class App extends Component {
 
         {/* {persons} */}
         {personsComponent}
-      </div>
+      </WithClass>
     );
   }
 
