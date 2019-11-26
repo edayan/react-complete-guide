@@ -32,7 +32,12 @@ export default class PersonsComponent extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('PersonsComponent.js: shouldComponentUpdate');
-    return true; // return true/false is must: true for update component
+    if (nextProps.persons !== this.props.persons) {
+      // only update if the persons changed
+      return true; // return true/false is must: true for update component
+    } else {
+      return false;
+    }
   }
 
   render() {
