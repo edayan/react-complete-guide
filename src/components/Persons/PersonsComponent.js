@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PersonComponent from './Person/PersonComponent';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-export default class PersonsComponent extends Component {
+export default class PersonsComponent extends PureComponent {
   constructor(props) {
     super(props);
     console.log('PersonsComponent.js: constructor');
@@ -30,15 +30,25 @@ export default class PersonsComponent extends Component {
    */
   // componentWillUpdate() {}
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('PersonsComponent.js: shouldComponentUpdate');
-    if (nextProps.persons !== this.props.persons) {
-      // only update if the persons changed
-      return true; // return true/false is must: true for update component
-    } else {
-      return false;
-    }
-  }
+  /**
+   * some times it needs to check all props has changed, then use pure component, which will check all the component changed internally
+   */
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('PersonsComponent.js: shouldComponentUpdate');
+  //   if (
+
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.name !== this.props.name ||
+  //     nextProps.age !== this.props.age
+
+  //   ) {
+  //     // only update if the persons changed
+  //     return true; // return true/false is must: true for update component
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   render() {
     console.log('PersonsComponent.js: render');
