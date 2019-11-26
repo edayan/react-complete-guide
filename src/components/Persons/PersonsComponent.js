@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import PersonComponent from './Person/PersonComponent';
+//import PersonComponent from './Person/PersonComponent';
+import PersonComponent from './Person/PersonComponentWithHoc';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 export default class PersonsComponent extends PureComponent {
