@@ -12,10 +12,13 @@ class PersonComponent extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  static contextType = AuthContext; //only react > 16.6
+
   componentDidMount() {
     //older way for ref
     // this.inputElement.focus();
     this.inputElementRef.current.focus();
+    console.log(this.context.authenticated);
   }
 
   render() {
@@ -24,11 +27,12 @@ class PersonComponent extends Component {
       <Aux>
         {/* //'withClass already has wrapping div with className={Person} */}
         {/* <div key={'i2'} className={this.props.Person}> */}
-        <AuthContext.Consumer>
-          {context =>
-            context.authenticated ? <p>Authenticated</p> : <p>Please login</p>
-          }
-        </AuthContext.Consumer>
+
+        {this.context.authenticated ? (
+          <p>Authenticated</p>
+        ) : (
+          <p>Please login</p>
+        )}
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
